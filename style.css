@@ -1,4 +1,5 @@
 body {
+    position: relative; /* Needed for absolute positioning of the logo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,6 +7,14 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #B6D0E2; /* Powder Blue */
+}
+
+#logo {
+    position: absolute;
+    top: 10px;     /* Adjust as needed for spacing from the top */
+    left: 10px;    /* Adjust as needed for spacing from the left */
+    width: 100px;  /* Optional: Adjust according to desired size */
+    height: auto;  /* Maintain aspect ratio */
 }
 
 .container {
