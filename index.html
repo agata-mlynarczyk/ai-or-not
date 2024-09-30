@@ -51,6 +51,9 @@
             categoryBox.innerText = 'Category: ' + texts[randomIndex].category;
             textBox.innerText = texts[randomIndex].text;
             authorBox.style.display = 'none';
+            // Clear any previous button highlights
+            aiButton.classList.remove('button-correct', 'button-incorrect');
+            humanButton.classList.remove('button-correct', 'button-incorrect');
         }
 
         // Function to handle button click and update score
@@ -58,18 +61,28 @@
             if (currentTextIndex === -1) return;  // Ensure the game has started
             
             const correctAnswer = texts[currentTextIndex].answer;
-            if (userAnswer === correctAnswer) {
+            const isCorrect = userAnswer === correctAnswer;
+            if (isCorrect) {
                 score++;
             } else {
                 score--;
             }
 
-            // Show the author
+            // Show the author and update score
             authorBox.innerText = texts[currentTextIndex].author;
             authorBox.style.display = 'block';
             scoreDisplay.innerText = score;
 
-            // Load the next text after 2 seconds
+            // Highlight the buttons
+            if (userAnswer === "AI") {
+                aiButton.classList.add(isCorrect ? 'button-correct' : 'button-incorrect');
+                humanButton.classList.remove('button-correct', 'button-incorrect');
+            } else {
+                humanButton.classList.add(isCorrect ? 'button-correct' : 'button-incorrect');
+                aiButton.classList.remove('button-correct', 'button-incorrect');
+            }
+
+            // Load the next text after 1 second
             setTimeout(displayRandomText, 1000);
         }
 
