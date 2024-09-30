@@ -30,6 +30,17 @@
             margin-bottom: 40px;
         }
 
+        .category-box {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .author-box {
+            margin-top: 20px;
+            font-size: 20px;
+            display: none;
+        }
+
         .button-container {
             display: flex;
             justify-content: space-around;
@@ -57,7 +68,9 @@
 </head>
 <body>
     <div class="container">
+        <div id="category-box" class="category-box">Category: N/A</div>
         <div id="text-box" class="text-box">Click a button to start!</div>
+        <div id="author-box" class="author-box"></div>
         <div class="button-container">
             <button id="ai-button">AI</button>
             <button id="human-button">Human</button>
@@ -66,7 +79,9 @@
     </div>
 
     <script>
+        const categoryBox = document.getElementById('category-box');
         const textBox = document.getElementById('text-box');
+        const authorBox = document.getElementById('author-box');
         const aiButton = document.getElementById('ai-button');
         const humanButton = document.getElementById('human-button');
         const scoreDisplay = document.getElementById('score');
@@ -93,7 +108,9 @@
             
             const randomIndex = Math.floor(Math.random() * texts.length);
             currentTextIndex = randomIndex;
+            categoryBox.innerText = 'Category: ' + texts[randomIndex].category;
             textBox.innerText = texts[randomIndex].text;
+            authorBox.style.display = 'none';
         }
 
         // Function to handle button click and update score
@@ -107,8 +124,13 @@
                 score--;
             }
 
+            // Show the author
+            authorBox.innerText = texts[currentTextIndex].author;
+            authorBox.style.display = 'block';
             scoreDisplay.innerText = score;
-            displayRandomText();  // Load the next text
+
+            // Load the next text after 3 seconds
+            setTimeout(displayRandomText, 3000);
         }
 
         // Event listeners for the buttons
