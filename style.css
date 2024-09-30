@@ -47,6 +47,9 @@ button {
     border-radius: 5px;
     background-color: #eee;
     transition: background-color 0.3s ease;
+    width: 140px;            /* Fixed width for uniformity */
+    text-align: center;      /* Ensure text and emoji are centered */
+    display: inline-block;   /* Treat the button as an inline-block element */
 }
 
 button:hover {
@@ -65,4 +68,3 @@ button:hover {
 .button-incorrect {
     background-color: #F44336; /* Red */
 }
-
