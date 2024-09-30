@@ -1,8 +1,38 @@
 [
-    { "text": "In a coffee shop,\ndecaf served in a slow drip—\nsnails start their race day.", "answer": "AI" },
-    { "text": "I love the smell of fresh coffee in the morning.", "answer": "Human" },
-    { "text": "Data-driven decisions are key to success in modern businesses.", "answer": "AI" },
-    { "text": "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.", "answer": "Human" },
-    { "text": "Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.", "answer": "Human" },
-    { "text": "Some say the world will end in fire,\nSome say in ice.\nFrom what I've tasted of desire\nI hold with those who favor fire.\nBut if it had to perish twice,\nI think I know enough of hate\nTo know that for destruction ice\nIs also great\nAnd would suffice.", "answer": "Human"}
+    {
+        "text": "In a coffee shop,\ndecaf served in a slow drip\u2014\nsnails start their race day.",
+        "answer": "AI",
+        "category": "unknown",
+        "author": "unknown"
+    },
+    {
+        "text": "I love the smell of fresh coffee in the morning.",
+        "answer": "Human",
+        "category": "unknown",
+        "author": "unknown"
+    },
+    {
+        "text": "Data-driven decisions are key to success in modern businesses.",
+        "answer": "AI",
+        "category": "unknown",
+        "author": "unknown"
+    },
+    {
+        "text": "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma \u2013 which is living with the results of other people's thinking.",
+        "answer": "Human",
+        "category": "unknown",
+        "author": "unknown"
+    },
+    {
+        "text": "Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.",
+        "answer": "Human",
+        "category": "unknown",
+        "author": "unknown"
+    },
+    {
+        "text": "Some say the world will end in fire,\nSome say in ice.\nFrom what I've tasted of desire\nI hold with those who favor fire.\nBut if it had to perish twice,\nI think I know enough of hate\nTo know that for destruction ice\nIs also great\nAnd would suffice.",
+        "answer": "Human",
+        "category": "unknown",
+        "author": "unknown"
+    }
 ]
