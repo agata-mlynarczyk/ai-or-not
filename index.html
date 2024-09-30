@@ -71,21 +71,26 @@
         const humanButton = document.getElementById('human-button');
         const scoreDisplay = document.getElementById('score');
 
-        // Dictionary of texts with the corresponding answers (AI or Human)
-        const texts = [
-            { text: "The weather today is perfect for a walk in the park.", answer: "Human" },
-            { text: "Artificial intelligence is transforming industries.", answer: "AI" },
-            { text: "I love the smell of fresh coffee in the morning.", answer: "Human" },
-            { text: "Data-driven decisions are key to success in modern businesses.", answer: "AI" },
-            { text: "The sunset over the mountains was breathtaking.", answer: "Human" },
-            { text: "Deep learning models require a significant amount of data.", answer: "AI" }
-        ];
-
+        let texts = [];
         let score = 0;
         let currentTextIndex = -1;
 
+        // Fetch the text data from the external JSON file
+        fetch('texts.json')
+            .then(response => response.json())
+            .then(data => {
+                texts = data;
+                displayRandomText();  // Start the game by displaying a random text after data is loaded
+            })
+            .catch(error => {
+                console.error('Error loading texts:', error);
+                textBox.innerText = "Failed to load questions!";
+            });
+
         // Function to display a random text
         function displayRandomText() {
+            if (texts.length === 0) return;
+            
             const randomIndex = Math.floor(Math.random() * texts.length);
             currentTextIndex = randomIndex;
             textBox.innerText = texts[randomIndex].text;
@@ -109,9 +114,6 @@
         // Event listeners for the buttons
         aiButton.addEventListener('click', () => checkAnswer("AI"));
         humanButton.addEventListener('click', () => checkAnswer("Human"));
-
-        // Initialize by displaying the first random text
-        displayRandomText();
 
     </script>
 </body>
