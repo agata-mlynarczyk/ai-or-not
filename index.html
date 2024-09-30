@@ -14,7 +14,7 @@
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
         }
-        
+
         .container {
             text-align: center;
             background-color: #fff;
@@ -24,17 +24,17 @@
             width: 80%;
             max-width: 600px;
         }
-        
+
         .text-box {
             font-size: 24px;
             margin-bottom: 40px;
         }
-        
+
         .button-container {
             display: flex;
             justify-content: space-around;
         }
-        
+
         button {
             padding: 10px 20px;
             font-size: 18px;
@@ -44,46 +44,74 @@
             background-color: #eee;
             transition: background-color 0.3s ease;
         }
-        
+
         button:hover {
             background-color: #ddd;
+        }
+
+        .score {
+            margin-top: 20px;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="text-box" class="text-box">TEXT HERE</div>
+        <div id="text-box" class="text-box">Click a button to start!</div>
         <div class="button-container">
             <button id="ai-button">AI</button>
             <button id="human-button">Human</button>
         </div>
+        <div class="score">Score: <span id="score">0</span></div>
     </div>
 
     <script>
-        // JavaScript to handle text changes will go here
         const textBox = document.getElementById('text-box');
         const aiButton = document.getElementById('ai-button');
         const humanButton = document.getElementById('human-button');
+        const scoreDisplay = document.getElementById('score');
 
-        // Example text array to cycle through
+        // Dictionary of texts with the corresponding answers (AI or Human)
         const texts = [
-            "This is the first text.",
-            "Here is the second text.",
-            "Another interesting text to read.",
-            "Can you guess if this is AI or Human?"
+            { text: "The weather today is perfect for a walk in the park.", answer: "Human" },
+            { text: "Artificial intelligence is transforming industries.", answer: "AI" },
+            { text: "I love the smell of fresh coffee in the morning.", answer: "Human" },
+            { text: "Data-driven decisions are key to success in modern businesses.", answer: "AI" },
+            { text: "The sunset over the mountains was breathtaking.", answer: "Human" },
+            { text: "Deep learning models require a significant amount of data.", answer: "AI" }
         ];
 
-        let currentTextIndex = 0;
+        let score = 0;
+        let currentTextIndex = -1;
 
-        // Function to change the text
-        function changeText() {
-            currentTextIndex = (currentTextIndex + 1) % texts.length;
-            textBox.innerText = texts[currentTextIndex];
+        // Function to display a random text
+        function displayRandomText() {
+            const randomIndex = Math.floor(Math.random() * texts.length);
+            currentTextIndex = randomIndex;
+            textBox.innerText = texts[randomIndex].text;
         }
 
-        // Event listeners for buttons (you can customize actions as needed)
-        aiButton.addEventListener('click', changeText);
-        humanButton.addEventListener('click', changeText);
+        // Function to handle button click and update score
+        function checkAnswer(userAnswer) {
+            if (currentTextIndex === -1) return;  // Ensure the game has started
+            
+            const correctAnswer = texts[currentTextIndex].answer;
+            if (userAnswer === correctAnswer) {
+                score++;
+            } else {
+                score--;
+            }
+
+            scoreDisplay.innerText = score;
+            displayRandomText();  // Load the next text
+        }
+
+        // Event listeners for the buttons
+        aiButton.addEventListener('click', () => checkAnswer("AI"));
+        humanButton.addEventListener('click', () => checkAnswer("Human"));
+
+        // Initialize by displaying the first random text
+        displayRandomText();
 
     </script>
 </body>
