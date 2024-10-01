@@ -23,8 +23,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 600px;  /* Fixed width for consistency */
-    height: 400px; /* Fixed height for consistency */
+    width: 700px;  /* Fixed width for consistency */
+    height: 500px; /* Fixed height for consistency */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Distribute space among children */
