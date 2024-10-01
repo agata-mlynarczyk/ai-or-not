@@ -23,8 +23,8 @@
         <div id="text-box" class="text-box">Click a button to start!</div>
         <div id="author-box" class="author-box"></div>
         <div class="button-container">
-            <button id="ai-button">🤖 AI</button>
-            <button id="human-button">🧑 Human</button>
+            <button id="ai-button" onclick="checkAnswer('AI')">🤖 AI</button>
+            <button id="human-button" onclick="checkAnswer('Human')">🧑 Human</button>
         </div>
     </div>
     
@@ -33,7 +33,6 @@
         Created by <a href="https://www.linkedin.com/in/mlynarczyk-agata/">Agata Mlynarczyk</a> and <a href="https://www.linkedin.com/in/patrick-wakil/">Patrick Wakil</a>
     </div>
     
-    <!-- Firebase Script Integration -->
     <script type="module">
         // Import Firebase SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
