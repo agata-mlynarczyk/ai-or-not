@@ -19,13 +19,13 @@
         <div class="score">Score: <span id="score">0</span></div>
     </div>
 
-    <!-- Firebase Integration -->
+    <!-- Firebase Script Integration -->
     <script type="module">
-        // Import the Firebase SDK and services
+        // Import Firebase SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
         import { getDatabase, ref, get, set, update } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
-        
-        // Your Firebase configuration
+
+        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyAzb29BLFBeOU6ikVM6-AZ7O1rQYczMgmM",
             authDomain: "ai-or-human-25519.firebaseapp.com",
@@ -43,9 +43,7 @@
         // Function to save or update user score in the database
         function saveUserScore(username, score) {
             const userRef = ref(database, 'users/' + username);
-            update(userRef, {
-                score: score
-            });
+            update(userRef, { score: score });
         }
 
         // Function to get the current score of a user
@@ -62,7 +60,6 @@
 
         // Ask for the username on page load
         let username = prompt("Please enter your username:");
-
         let score = 0; // User's score
 
         // Retrieve and set the current score for the user
@@ -70,10 +67,8 @@
             score = userScore;
             document.getElementById('score').innerText = score;
         });
-    </script>
 
-    <!-- Quiz Functionality -->
-    <script>
+        // Elements
         const categoryBox = document.getElementById('category-box');
         const textBox = document.getElementById('text-box');
         const authorBox = document.getElementById('author-box');
@@ -81,7 +76,7 @@
         const humanButton = document.getElementById('human-button');
         const scoreDisplay = document.getElementById('score');
 
-        let texts = [];
+        let texts = []; // Array to hold questions data
         let currentTextIndex = -1;
 
         // Fetch the text data from the external JSON file
@@ -89,7 +84,7 @@
             .then(response => response.json())
             .then(data => {
                 texts = data;
-                displayRandomText();  // Start the game by displaying a random text after data is loaded
+                displayRandomText(); // Start the game by displaying a random text after data is loaded
             })
             .catch(error => {
                 console.error('Error loading texts:', error);
@@ -99,15 +94,12 @@
         // Function to display a random text
         function displayRandomText() {
             if (texts.length === 0) return;
-            
+
             const randomIndex = Math.floor(Math.random() * texts.length);
             currentTextIndex = randomIndex;
             categoryBox.innerText = 'Category: ' + texts[randomIndex].category;
             textBox.innerText = texts[randomIndex].text;
-            authorBox.style.display = 'none';
-            // Clear any previous button highlights
-            aiButton.classList.remove('button-correct', 'button-incorrect');
-            humanButton.classList.remove('button-correct', 'button-incorrect');
+            authorBox.style.display = 'none'; // Hide author until answered
         }
 
         // Function to handle button click and update score
@@ -116,28 +108,15 @@
             
             const correctAnswer = texts[currentTextIndex].answer;
             const isCorrect = userAnswer === correctAnswer;
-            if (isCorrect) {
-                score++;
-            } else {
-                score--;
-            }
+            score += isCorrect ? 1 : -1;  // Increment or decrement score based on correctness
 
-            // Update score in the database and display it
+            // Save updated score in Firebase
             saveUserScore(username, score);
-            scoreDisplay.innerText = score;
 
-            // Show the author
-            authorBox.innerText = texts[currentTextIndex].author;
+            // Show the author and update score display
+            authorBox.innerText = 'Author: ' + texts[currentTextIndex].author;
             authorBox.style.display = 'block';
-
-            // Highlight the buttons
-            if (userAnswer === "AI") {
-                aiButton.classList.add(isCorrect ? 'button-correct' : 'button-incorrect');
-                humanButton.classList.remove('button-correct', 'button-incorrect');
-            } else {
-                humanButton.classList.add(isCorrect ? 'button-correct' : 'button-incorrect');
-                aiButton.classList.remove('button-correct', 'button-incorrect');
-            }
+            scoreDisplay.innerText = score;
 
             // Load the next text after 1 second
             setTimeout(displayRandomText, 1000);
