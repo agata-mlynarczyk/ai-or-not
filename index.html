@@ -8,6 +8,16 @@
 </head>
 <body>
     <img src="ai_or_human_logo.png" alt="AI or Human Logo" id="logo">
+    
+    <!-- Top Ribbon -->
+    <div class="top-ribbon">
+        <h1>AI vs Human Quiz</h1>
+        <div class="top-links">
+            <span class="score">Score: <span id="score">0</span></span>
+            <a href="leaderboard.html">Leaderboard</a>
+        </div>
+    </div>
+    
     <div class="container">
         <div id="category-box" class="category-box">Category: N/A</div>
         <div id="text-box" class="text-box">Click a button to start!</div>
@@ -16,9 +26,13 @@
             <button id="ai-button">🤖 AI</button>
             <button id="human-button">🧑 Human</button>
         </div>
-        <div class="score">Score: <span id="score">0</span></div>
     </div>
-
+    
+    <!-- Bottom Ribbon -->
+    <div class="bottom-ribbon">
+        Created by <a href="https://www.linkedin.com/in/mlynarczyk-agata/">Agata Mlynarczyk</a> and <a href="https://www.linkedin.com/in/patrick-wakil/">Patrick Wakil</a>
+    </div>
+    
     <!-- Firebase Script Integration -->
     <script type="module">
         // Import Firebase SDKs
@@ -27,13 +41,13 @@
 
         // Firebase Configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyAzb29BLFBeOU6ikVM6-AZ7O1rQYczMgmM",
-            authDomain: "ai-or-human-25519.firebaseapp.com",
-            databaseURL: "https://ai-or-human-25519-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "ai-or-human-25519",
-            storageBucket: "ai-or-human-25519.appspot.com",
-            messagingSenderId: "85813605872",
-            appId: "1:85813605872:web:e7fe7dd37f31cc92171935"
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
         };
 
         // Initialize Firebase
