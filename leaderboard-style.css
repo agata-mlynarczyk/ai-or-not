@@ -1,0 +1,72 @@
+/* Styling for the leaderboard container */
+.leaderboard-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Title styling */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+thead th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 1.2em;
+    border: 1px solid #ddd;
+}
+
+tbody td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Rank number styling */
+tbody tr td:first-child {
+    font-weight: bold;
+}
+
+/* Back button styling */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
