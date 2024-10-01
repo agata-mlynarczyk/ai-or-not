@@ -79,11 +79,18 @@
 
         // Ask for the username on page load
         let username = prompt("Please enter your username:");
-        let score = 0; // User's score
+
+        // Validate the username input
+        if (!username || username.trim() === "") {
+            alert("Username cannot be empty. Please refresh the page and try again.");
+            throw new Error("Invalid username"); // Stops the execution if the username is invalid
+        }
 
         // Display the username in the top ribbon
         document.getElementById('username-display').innerText = `${username}`;
         
+        let score = 0; // User's score
+
         // Retrieve and set the current score for the user
         getUserScore(username).then(userScore => {
             score = userScore;
