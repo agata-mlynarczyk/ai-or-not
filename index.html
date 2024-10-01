@@ -9,7 +9,7 @@
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
         import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
-        import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -29,8 +29,19 @@
 
         let userId = null; // To store user ID
         let score = 0; // User's score
+        let username = ''; // Store username
         let texts = []; // Array to store questions and answers
         let currentTextIndex = -1; // Index for current text
+
+        // Function to ask for username
+        function askForUsername() {
+            username = prompt('Please enter your username:');
+            if (!username) {
+                alert('Username is required to play the quiz.');
+                return askForUsername();
+            }
+            loadUserScore(username); // Load user score based on username
+        }
 
         // Sign in the user anonymously
         signInAnonymously(auth)
@@ -38,15 +49,15 @@
                 // Signed in 
                 const user = userCredential.user;
                 userId = user.uid; // Store user ID
-                loadUserScore(userId); // Load user score from database
+                askForUsername(); // Ask for username
                 fetchTexts(); // Fetch texts from JSON file
             })
             .catch((error) => {
                 console.error('Error signing in:', error);
             });
 
-        function loadUserScore(userId) {
-            const scoreRef = ref(database, `scores/${userId}`);
+        function loadUserScore(username) {
+            const scoreRef = ref(database, `scores/${username}`);
             get(scoreRef)
                 .then((snapshot) => {
                     if (snapshot.exists()) {
@@ -61,8 +72,8 @@
                 });
         }
 
-        function updateUserScore(userId, newScore) {
-            const scoreRef = ref(database, `scores/${userId}`);
+        function updateUserScore(username, newScore) {
+            const scoreRef = ref(database, `scores/${username}`);
             set(scoreRef, {
                 score: newScore
             }).then(() => {
@@ -112,7 +123,7 @@
             document.getElementById('score').innerText = score;
 
             // Update the user's score in the database
-            updateUserScore(userId, score);
+            updateUserScore(username, score);
 
             // Highlight the buttons
             if (userAnswer === "AI") {
