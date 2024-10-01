@@ -10,6 +10,7 @@
     <!-- Top Ribbon -->
     <div class="top-ribbon">
         <span id="username-display"></span>
+        <span id="score-display"></span>
     </div>
     
     <img src="ai_or_human_logo.png" alt="AI or Human Logo" id="logo">
@@ -21,7 +22,6 @@
             <button id="ai-button">🤖 AI</button>
             <button id="human-button">🧑 Human</button>
         </div>
-        <div class="score">Score: <span id="score">0</span></div>
     </div>
 
     <!-- Bottom Ribbon -->
@@ -82,12 +82,12 @@
         let score = 0; // User's score
 
         // Display the username in the top ribbon
-        document.getElementById('username-display').innerText = `Welcome, ${username}!`;
-
+        document.getElementById('username-display').innerText = `Username: ${username}`;
+        
         // Retrieve and set the current score for the user
         getUserScore(username).then(userScore => {
             score = userScore;
-            document.getElementById('score').innerText = score;
+            document.getElementById('score-display').innerText = `Score: ${score}`;
         });
 
         // Elements
@@ -96,7 +96,6 @@
         const authorBox = document.getElementById('author-box');
         const aiButton = document.getElementById('ai-button');
         const humanButton = document.getElementById('human-button');
-        const scoreDisplay = document.getElementById('score');
 
         let texts = []; // Array to hold questions data
         let currentTextIndex = -1;
@@ -138,7 +137,7 @@
             // Show the author and update score display
             authorBox.innerText = 'Author: ' + texts[currentTextIndex].author;
             authorBox.style.display = 'block';
-            scoreDisplay.innerText = score;
+            document.getElementById('score-display').innerText = `Score: ${score}`;
 
             // Load the next text after 1 second
             setTimeout(displayRandomText, 1000);
