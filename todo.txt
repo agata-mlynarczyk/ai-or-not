@@ -1,2 +1,3 @@
 leaderboard 
 secure the database 
+fix the null user
