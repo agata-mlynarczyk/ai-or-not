@@ -7,28 +7,71 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #B6D0E2; /* Powder Blue */
+    padding-top: 50px; /* Padding to accommodate top ribbon */
+    padding-bottom: 50px; /* Padding to avoid content overlap with bottom ribbon */
 }
 
 #logo {
     position: absolute;
-    top: 10px;     /* Adjust as needed for spacing from the top */
-    left: 10px;    /* Adjust as needed for spacing from the left */
-    width: 120px;   /* Optional: Adjust according to desired size */
-    height: auto;  /* Maintain aspect ratio */
+    top: 10px;
+    left: 10px;
+    width: 120px;
+    height: auto;
+}
+
+.top-ribbon {
+    background-color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Keep the ribbon above other elements */
+}
+
+.top-ribbon h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.top-links {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.top-links .score {
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.top-links a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.top-links a:hover {
+    text-decoration: underline;
 }
 
 .container {
     text-align: center;
-    background-color: #fff; /* White background for the text container */
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 850px;  /* Fixed width for consistency */
-    height: 600px; /* Fixed height for consistency */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 850px;
+    height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribute space among children */
-    overflow: auto; /* Makes content scrollable if it overflows */
+    justify-content: space-between;
+    overflow: auto;
 }
 
 .text-box {
@@ -60,24 +103,60 @@ button {
     border-radius: 5px;
     background-color: #eee;
     transition: background-color 0.3s ease;
-    width: 140px;            /* Fixed width for uniformity */
-    text-align: center;      /* Ensure text and emoji are centered */
-    display: inline-block;   /* Treat the button as an inline-block element */
+    width: 140px;
+    text-align: center;
 }
 
 button:hover {
     background-color: #ddd;
 }
 
-.score {
-    margin-top: 20px;
-    font-size: 20px;
+.bottom-ribbon {
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.button-correct {
-    background-color: #4CAF50; /* Green */
+.bottom-ribbon a {
+    color: #007BFF;
+    text-decoration: none;
 }
 
-.button-incorrect {
-    background-color: #F44336; /* Red */
+.bottom-ribbon a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .top-links, .bottom-ribbon {
+        flex-direction: column;
+        text-align: center;
+        position: static;
+        transform: none;
+    }
+
+    .top-links .score,
+    .top-links a {
+        margin-top: 5px;
+        font-size: 16px;
+    }
+
+    .top-ribbon h1,
+    .bottom-ribbon a {
+        font-size: 20px;
+    }
+
+    .container {
+        width: 90%;
+        height: auto; /* Adjust height for smaller devices */
+        padding-bottom: 20px;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0; /* Add margin for vertical spacing on smaller screens */
+    }
 }
