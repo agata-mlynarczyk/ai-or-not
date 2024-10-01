@@ -8,7 +8,9 @@
 </head>
 <body>
     <!-- Top Ribbon -->
-    <div class="top-ribbon"></div>
+    <div class="top-ribbon">
+        <span id="username-display"></span>
+    </div>
     
     <img src="ai_or_human_logo.png" alt="AI or Human Logo" id="logo">
     <div class="container">
@@ -78,6 +80,9 @@
         // Ask for the username on page load
         let username = prompt("Please enter your username:");
         let score = 0; // User's score
+
+        // Display the username in the top ribbon
+        document.getElementById('username-display').innerText = `Welcome, ${username}!`;
 
         // Retrieve and set the current score for the user
         getUserScore(username).then(userScore => {
