@@ -30,13 +30,38 @@
         let texts = [];
         let score = 0;
         let currentTextIndex = -1;
+        let username = '';
+
+        // Prompt the user for a username when they first load the page
+        function promptForUsername() {
+            username = prompt('Enter your username:');
+            if (!username) {
+                alert('You need to enter a username to play.');
+                promptForUsername();
+            } else {
+                loadUserScore(); // Load the saved score for the user
+            }
+        }
+
+        // Load the score from localStorage for the entered username
+        function loadUserScore() {
+            const savedScore = localStorage.getItem(username);
+            score = savedScore ? parseInt(savedScore) : 0;
+            scoreDisplay.innerText = score;
+        }
+
+        // Save the score to localStorage
+        function saveUserScore() {
+            localStorage.setItem(username, score);
+        }
 
         // Fetch the text data from the external JSON file
         fetch('texts.json')
             .then(response => response.json())
             .then(data => {
                 texts = data;
-                displayRandomText();  // Start the game by displaying a random text after data is loaded
+                promptForUsername();  // Prompt for the username after the data is loaded
+                displayRandomText();   // Start the game by displaying a random text
             })
             .catch(error => {
                 console.error('Error loading texts:', error);
@@ -73,6 +98,7 @@
             authorBox.innerText = texts[currentTextIndex].author;
             authorBox.style.display = 'block';
             scoreDisplay.innerText = score;
+            saveUserScore();  // Save the updated score
 
             // Highlight the buttons
             if (userAnswer === "AI") {
