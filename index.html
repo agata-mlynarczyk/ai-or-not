@@ -82,7 +82,7 @@
         let score = 0; // User's score
 
         // Display the username in the top ribbon
-        document.getElementById('username-display').innerText = `Username: ${username}`;
+        document.getElementById('username-display').innerText = `${username}`;
         
         // Retrieve and set the current score for the user
         getUserScore(username).then(userScore => {
