@@ -1,3 +1,4 @@
 leaderboard 
 secure the database 
 fix the null user
+expanding to images
