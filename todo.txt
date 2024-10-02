@@ -2,4 +2,4 @@ leaderboard
 secure the database 
 expanding to images
 do not ask for login on refresh or back to page
-stick logo to ribbon
+username case sensitive
