@@ -40,14 +40,14 @@ body {
 /* Leaderboard text link style */
 .leaderboard-link {
     font-size: 18px;
-    color: #000;
+    color: inherit; /* Use the same color as the rest of the text */
     text-decoration: none;
     margin-left: auto; /* Push the text to the right */
     padding-right: 20px; /* Adjust for spacing */
 }
 
 .leaderboard-link:hover {
-    text-decoration: underline;
+    text-decoration: none; /* No underline on hover */
 }
 
 .container {
