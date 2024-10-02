@@ -109,7 +109,7 @@ button:hover {
 
 .bottom-ribbon {
     background-color: #fff;
-    padding: 10px;
+    padding: 10px 20px;
     text-align: left;
     position: fixed;
     bottom: 0;
