@@ -1,5 +1,6 @@
+/* General Styles for Both Pages */
 body {
-    position: relative; /* Needed for absolute positioning of the logo */
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +48,7 @@ body {
     border-radius: 5px;
     background-color: #eee;
     transition: background-color 0.3s ease;
-    display: inline-flex; /* Use inline-flex to keep content on the same line */
+    display: inline-flex;
     align-items: center; /* Vertically align content */
     justify-content: center; /* Horizontally center content */
 }
@@ -107,6 +108,7 @@ button:hover {
     background-color: #ddd;
 }
 
+/* Bottom Ribbon - Shared Across Pages */
 .bottom-ribbon {
     background-color: #fff;
     padding: 10px 20px;
@@ -126,6 +128,7 @@ button:hover {
     text-decoration: underline;
 }
 
+/* Responsive Styles */
 @media (max-width: 600px) {
     .top-links, .bottom-ribbon {
         flex-direction: column;
@@ -155,4 +158,76 @@ button:hover {
         width: 100%;
         margin: 5px 0; /* Add margin for vertical spacing on smaller screens */
     }
+}
+
+/* Leaderboard Specific Styles */
+.leaderboard-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Title Styling */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+thead th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 1.2em;
+    border: 1px solid #ddd;
+}
+
+tbody td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Rank Number Styling */
+tbody tr td:first-child {
+    font-weight: bold;
+}
+
+/* Back Button Styling */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #45a049;
 }
