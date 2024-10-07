@@ -18,16 +18,100 @@
         "author": "ChatGPT 4o"
     },
     {
+        "text": "Beneath the moonlight, leaves whisper ancient secrets to the wind.",
+        "answer": "AI",
+        "category": "Haiku",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "Silent snowfall drifts, painting the world in pure white dreams.",
+        "answer": "AI",
+        "category": "Haiku",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "Sometimes, courage isn't found in the roar of battle, but in the quiet steps taken in the dark.",
+        "answer": "AI",
+        "category": "Quote",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "When the stars align, even the impossible becomes destiny.",
+        "answer": "AI",
+        "category": "Quote",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "Life is like a sandwich—no matter how you make it, someone’s going to want to take a bite.",
+        "answer": "AI",
+        "category": "Joke",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "Why don't skeletons fight each other? They don't have the guts.",
+        "answer": "AI",
+        "category": "Joke",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "Illuminate your world, one spark at a time.",
+        "answer": "AI",
+        "category": "Slogan",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "Beyond the ordinary. Find the extraordinary.",
+        "answer": "AI",
+        "category": "Slogan",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "To love is to see the reflection of your soul in someone else's eyes.\nTo cradle their darkness as tenderly as their light, knowing both are sacred.\nAnd in the silence between breaths, feel the infinite longing that binds two souls beyond time.",
+        "answer": "AI",
+        "category": "Poem",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "Waves crash against the shore; love comes and goes like the tide, eternal yet fleeting.",
+        "answer": "AI",
+        "category": "Poem",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "You know, kid, sometimes the hardest thing and the right thing are the same.",
+        "answer": "AI",
+        "category": "Movie Quote",
+        "author": "ChatGPT 4o"
+    },
+    {
+        "text": "In the end, we all become stories. Make sure yours is one worth telling.",
+        "answer": "AI",
+        "category": "Movie Quote",
+        "author": "ChatGPT 4o"
+    },
+    {
         "text": "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma \u2013 which is living with the results of other people's thinking.",
         "answer": "Human",
         "category": "Qoute",
-        "author": "unknown"
+        "author": "Steve Jobs"
     },
     {
         "text": "Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.",
         "answer": "Human",
         "category": "Movie quote",
         "author": "Albus Dumbledore, Harry Potter"
+    },
+    {
+        "text": "It's OK to have your eggs in one basket as long as you control what happens to that basket.",
+        "answer": "Human",
+        "category": "Quote",
+        "author": "Elon Musk"
+    },
+    {
+        "text": "",
+        "answer": "AI",
+        "category": "",
+        "author": "ChatGPT 4o"
     },
     {
         "text": "Some say the world will end in fire,\nSome say in ice.\nFrom what I've tasted of desire\nI hold with those who favor fire.\nBut if it had to perish twice,\nI think I know enough of hate\nTo know that for destruction ice\nIs also great\nAnd would suffice.",
