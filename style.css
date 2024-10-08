@@ -24,7 +24,7 @@ body {
 .top-ribbon {
     background-color: #fff;
     padding: 10px 20px;
-    text-align: center; /* Center the content */
+    text-align: center;
     position: fixed;
     top: 0;
     width: 100%;
@@ -33,9 +33,16 @@ body {
     font-size: 20px;
     font-weight: bold;
     display: flex;
-    justify-content: center; /* Center content horizontally */
+    justify-content: space-between; /* Space between elements */
     align-items: center; /* Center content vertically */
-    gap: 20px; /* Add space between username and score */
+}
+
+.top-ribbon div {
+    display: flex;
+    justify-content: center; /* Center the username and score */
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1; /* Allow div to grow and fill available space */
 }
 
 #username-display,
@@ -48,10 +55,9 @@ body {
 /* Leaderboard text link style */
 .leaderboard-link {
     font-size: 18px;
-    color: inherit; /* Use the same color as the rest of the text */
+    color: inherit;
     text-decoration: none;
-    margin-left: auto; /* Push the text to the right */
-    padding-right: 20px; /* Adjust for spacing */
+    padding-right: 20px;
 }
 
 .leaderboard-link:hover {
