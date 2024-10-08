@@ -90,10 +90,136 @@
         "author": "ChatGPT 4o"
     },
     {
+        "text": "Stars like diamond dust,\nScattered across velvet night,\nMoon a silver tear.",
+        "answer": "AI",
+        "category": "Haiku",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "Whispering willow bends,\nLeaves like emerald whispers fall,\nRiver sighs along.",
+        "answer": "AI",
+        "category": "Haiku",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "In realms of twilight dreams take flight,\nWhere crystal castles pierce the sky,\nAnd dragons dance in starry light.",
+        "answer": "AI",
+        "category": "Poem",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "The ocean whispers secrets old,\nOf mermaids singing, tales untold,\nA symphony of waves, brave and bold.",
+        "answer": "AI",
+        "category": "Poem",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "Fear not the shadows, for they hold the secrets of the universe.",
+        "answer": "AI",
+        "category": "Movie Quote",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "The heart that sings with courage will never be silenced.",
+        "answer": "AI",
+        "category": "Movie Quote",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "Kindness is a language that even the stars understand.",
+        "answer": "AI",
+        "category": "Quote",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "The greatest adventures are found not on maps, but in the whispers of your soul.",
+        "answer": "AI",
+        "category": "Quote",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "Blooming beauty delivered with heart.",
+        "answer": "AI",
+        "category": "Slogan",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "Ride beyond limits. Explore your city. Be Stellar.",
+        "answer": "AI",
+        "category": "Slogan",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "Jinxed wizards pluck my five boxing gloves, watching the quick brown cat.", 
+        "answer": "AI",
+        "category": "Pangram",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "The quick brown fox jumps over lazy Agata's back, wearing five boxing gloves.",
+        "answer": "AI",
+        "category": "Pangram",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "Fuzzy Wizzle's fizzling whizzers whizzed while zigzagging through the zany zoo.",
+        "answer": "AI",
+        "category": "Tongue Twister",
+        "author": "Gemini 1.5"
+    },
+    {
+        "text": "Sheena the she-sphinx swiftly shifted shiny seashells, splashing shimmering sprays.",
+        "answer": "AI",
+        "category": "Tongue Twister",
+        "author": "Gemini 1.5"
+    },
+    {
         "text": "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma \u2013 which is living with the results of other people's thinking.",
         "answer": "Human",
         "category": "Qoute",
         "author": "Steve Jobs"
+    },
+    {
+        "text": "Adventure is not in the guidebook and beauty is not on the map. Seek and ye shall find.",
+        "answer": "Human",
+        "category": "Qoute",
+        "author": "Terry and Renny Russell"
+    },
+    {
+        "text": "Unleash Your Inner Sparkle.",
+        "answer": "Human",
+        "category": "Slogan",
+        "author": "BeSunny"
+    },
+    {
+        "text": "Why don't they play poker in the jungle? Too many cheetahs!",
+        "answer": "Human",
+        "category": "Joke",
+        "author": "r/jokes"
+    },
+    {
+        "text": "The five boxing wizards jump quickly.",
+        "answer": "Human",
+        "category": "Pangram"
+        "author": "David Lemon & Elzo Smid"
+    },
+    {
+        "text": "What do you call a lazy kangaroo? Pouch potato!",
+        "answer": "Human",
+        "category": "Joke",
+        "author": "r/dadjokes"
+    },
+    {
+        "text": "Fred specialized in the job of making very quaint wax toys.",
+        "answer": "Human",
+        "category": "Pangram"
+        "author": "David Lemon & Elzo Smid"
+    },
+    {
+        "text" : "Kindness is the language which the deaf can hear and the blind can see",
+        "answer": "Human",
+        "category": "Qoute",
+        "author": "Mark Twain"
     },
     {
         "text": "Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.",
