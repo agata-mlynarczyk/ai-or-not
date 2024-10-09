@@ -135,7 +135,7 @@
         }
 
         // Function to handle button click and update score
-        function checkAnswer(userAnswer) {
+        function checkAnswer(userAnswer, selectedButton) {
             if (currentTextIndex === -1) return;  // Ensure the game has started
             
             const correctAnswer = texts[currentTextIndex].answer;
