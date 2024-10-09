@@ -1,171 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI vs Human Quiz</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <!-- Top Ribbon -->
-    <div class="top-ribbon">
-        <div>
-        <span id="username-display"></span>
-        <span id="score-display"></span>
-        </div>
-        <!-- Leaderboard Button on the Top Ribbon -->
-        <a href="leaderboard.html" class="leaderboard-link">🏆 Leaderboard 🏆</a>
-    </div>
-    
-    <img src="logo_final.png" alt="AI or Human Logo" id="logo">
-    <div class="container">
-        <div id="category-box" class="category-box">Category: N/A</div>
-        <div id="text-box" class="text-box">Click a button to start!</div>
-        <div id="author-box" class="author-box"></div>
-        <div class="button-container">
-            <button id="ai-button">🤖 AI</button>
-            <button id="human-button">🧑 Human</button>
-        </div>
-    </div>
+<script type="module">
+    // Import Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+    import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
 
-    <!-- Bottom Ribbon -->
-    <div class="bottom-ribbon">
-        <span>Created by </span>
-        <a href="https://www.linkedin.com/in/mlynarczyk-agata/" target="_blank">Agata Mlynarczyk</a> and
-        <a href="https://www.linkedin.com/in/patrick-wakil/" target="_blank">Patrick Wakil</a>
-    </div>
+    // Firebase Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAzb29BLFBeOU6ikVM6-AZ7O1rQYczMgmM",
+        authDomain: "ai-or-human-25519.firebaseapp.com",
+        databaseURL: "https://ai-or-human-25519-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "ai-or-human-25519",
+        storageBucket: "ai-or-human-25519.appspot.com",
+        messagingSenderId: "85813605872",
+        appId: "1:85813605872:web:e7fe7dd37f31cc92171935"
+    };
 
-    <!-- Firebase Script Integration -->
-    <script type="module">
-        // Import Firebase SDKs
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
-        import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
 
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAzb29BLFBeOU6ikVM6-AZ7O1rQYczMgmM",
-            authDomain: "ai-or-human-25519.firebaseapp.com",
-            databaseURL: "https://ai-or-human-25519-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "ai-or-human-25519",
-            storageBucket: "ai-or-human-25519.appspot.com",
-            messagingSenderId: "85813605872",
-            appId: "1:85813605872:web:e7fe7dd37f31cc92171935"
-        };
+    // Function to save or update user score in the database
+    function saveUserScore(username, score) {
+        const userRef = ref(database, 'users/' + username);
+        set(userRef, { score: score }).then(() => {
+            console.log("Score saved successfully for " + username);
+        }).catch(error => {
+            console.error("Error saving score: ", error);
+        });
+    }
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
+    // Function to get the current score of a user
+    function getUserScore(username) {
+        const userRef = ref(database, 'users/' + username);
+        return get(userRef).then(snapshot => {
+            if (snapshot.exists()) {
+                return snapshot.val().score || 0;
+            } else {
+                return 0; // If no score exists, start with 0
+            }
+        }).catch(error => {
+            console.error("Error fetching user score:", error);
+            return 0; // Default to 0 in case of error
+        });
+    }
 
-        // Function to save or update user score in the database
-        function saveUserScore(username, score) {
-            const userRef = ref(database, 'users/' + username);
-            set(userRef, { score: score }).then(() => {
-                console.log("Score saved successfully for " + username);
-            }).catch(error => {
-                console.error("Error saving score: ", error);
-            });
-        }
+    // Check if username is already stored in localStorage
+    let username = localStorage.getItem('username');
 
-        // Function to get the current score of a user
-        function getUserScore(username) {
-            const userRef = ref(database, 'users/' + username);
-            return get(userRef).then(snapshot => {
-                if (snapshot.exists()) {
-                    return snapshot.val().score || 0;
-                } else {
-                    return 0; // If no score exists, start with 0
-                }
-            }).catch(error => {
-                console.error("Error fetching user score:", error);
-                return 0; // Default to 0 in case of error
-            });
-        }
-
-        // Ask for the username on page load
-        let username = prompt("Please enter your username:");
-
+    // If not, prompt for username
+    if (!username || username.trim() === "") {
+        username = prompt("Please enter your username:");
+        
         // Validate the username input
         if (!username || username.trim() === "") {
             alert("Username cannot be empty. Please refresh the page and try again.");
             throw new Error("Invalid username"); // Stops the execution if the username is invalid
         }
 
-        // Display the username in the top ribbon
-        document.getElementById('username-display').innerText = `${username}`;
-        
-        let score = 0; // User's score
+        // Store the username in localStorage
+        localStorage.setItem('username', username);
+    }
 
-        // Retrieve and set the current score for the user
-        getUserScore(username).then(userScore => {
-            score = userScore;
-            document.getElementById('score-display').innerText = `Score: ${score}`;
+    // Display the username in the top ribbon
+    document.getElementById('username-display').innerText = `${username}`;
+    
+    let score = 0; // User's score
+
+    // Retrieve and set the current score for the user
+    getUserScore(username).then(userScore => {
+        score = userScore;
+        document.getElementById('score-display').innerText = `Score: ${score}`;
+    });
+
+    // Elements
+    const categoryBox = document.getElementById('category-box');
+    const textBox = document.getElementById('text-box');
+    const authorBox = document.getElementById('author-box');
+    const aiButton = document.getElementById('ai-button');
+    const humanButton = document.getElementById('human-button');
+    const changeUsernameButton = document.getElementById('change-username-button'); // Add this line
+
+    let texts = []; // Array to hold questions data
+    let currentTextIndex = -1;
+
+    // Fetch the text data from the external JSON file
+    fetch('texts.json')
+        .then(response => response.json())
+        .then(data => {
+            texts = data;
+            displayRandomText(); // Start the game by displaying a random text after data is loaded
+        })
+        .catch(error => {
+            console.error('Error loading texts:', error);
+            textBox.innerText = "Failed to load questions!";
         });
 
-        // Elements
-        const categoryBox = document.getElementById('category-box');
-        const textBox = document.getElementById('text-box');
-        const authorBox = document.getElementById('author-box');
-        const aiButton = document.getElementById('ai-button');
-        const humanButton = document.getElementById('human-button');
+    // Function to display a random text
+    function displayRandomText() {
+        if (texts.length === 0) return;
 
-        let texts = []; // Array to hold questions data
-        let currentTextIndex = -1;
+        const randomIndex = Math.floor(Math.random() * texts.length);
+        currentTextIndex = randomIndex;
+        categoryBox.innerText = 'Category: ' + texts[randomIndex].category;
+        textBox.innerText = texts[randomIndex].text;
+        authorBox.style.display = 'none'; // Hide author until answered
+    }
 
-        // Fetch the text data from the external JSON file
-        fetch('texts.json')
-            .then(response => response.json())
-            .then(data => {
-                texts = data;
-                displayRandomText(); // Start the game by displaying a random text after data is loaded
-            })
-            .catch(error => {
-                console.error('Error loading texts:', error);
-                textBox.innerText = "Failed to load questions!";
-            });
+    // Function to handle button click and update score
+    function checkAnswer(event) {
+        if (currentTextIndex === -1) return;  // Ensure the game has started
+        
+        const selectedButton = event.target;  // Get the clicked button
+        const userAnswer = selectedButton.id === 'ai-button' ? "AI" : "Human";  // Determine answer based on button
+        const correctAnswer = texts[currentTextIndex].answer;
+        const isCorrect = userAnswer === correctAnswer;
+        score += isCorrect ? 1 : -1;  // Increment or decrement score based on correctness
 
-        // Function to display a random text
-        function displayRandomText() {
-            if (texts.length === 0) return;
+        // Save updated score in Firebase
+        saveUserScore(username, score);
 
-            const randomIndex = Math.floor(Math.random() * texts.length);
-            currentTextIndex = randomIndex;
-            categoryBox.innerText = 'Category: ' + texts[randomIndex].category;
-            textBox.innerText = texts[randomIndex].text;
-            authorBox.style.display = 'none'; // Hide author until answered
+        // Show the author and update score display
+        authorBox.innerText = 'Author: ' + texts[currentTextIndex].author;
+        authorBox.style.display = 'block';
+        document.getElementById('score-display').innerText = `Score: ${score}`;
+
+        // Change button color based on correctness
+        selectedButton.style.backgroundColor = isCorrect ? 'green' : 'red';
+
+        // Load the next text after 1 second
+        setTimeout(() => {
+            selectedButton.style.backgroundColor = ''; // Reset to default
+            displayRandomText(); // Load next text
+        }, 1000);
+    }
+
+    // Function to change username
+    function changeUsername() {
+        // Clear username from localStorage
+        localStorage.removeItem('username');
+
+        // Prompt for new username
+        username = prompt("Enter your new username:");
+
+        // Validate the username input
+        if (!username || username.trim() === "") {
+            alert("Username cannot be empty. Please refresh the page and try again.");
+            return; // Exit if the username is invalid
         }
 
-        // Function to handle button click and update score
-        function checkAnswer(event) {
-            if (currentTextIndex === -1) return;  // Ensure the game has started
-            
-            const selectedButton = event.target;  // Get the clicked button
-            const userAnswer = selectedButton.id === 'ai-button' ? "AI" : "Human";  // Determine answer based on button
-            const correctAnswer = texts[currentTextIndex].answer;
-            const isCorrect = userAnswer === correctAnswer;
-            score += isCorrect ? 1 : -1;  // Increment or decrement score based on correctness
+        // Store the new username in localStorage
+        localStorage.setItem('username', username);
 
-            // Save updated score in Firebase
-            saveUserScore(username, score);
+        // Update username display
+        document.getElementById('username-display').innerText = `${username}`;
 
-            // Show the author and update score display
-            authorBox.innerText = 'Author: ' + texts[currentTextIndex].author;
-            authorBox.style.display = 'block';
-            document.getElementById('score-display').innerText = `Score: ${score}`;
+        // Reset score
+        score = 0;
+        document.getElementById('score-display').innerText = `Score: ${score}`;
 
-            // Change button color based on correctness
-            selectedButton.style.backgroundColor = isCorrect ? 'green' : 'red';
+        // Save new score in Firebase
+        saveUserScore(username, score);
+    }
 
-            // Load the next text after 1 second
-            setTimeout(() => {
-                selectedButton.style.backgroundColor = ''; // Reset to default
-                displayRandomText(); // Load next text
-            }, 1000);
-        }
+    // Event listeners for the buttons
+    aiButton.addEventListener('click', checkAnswer);
+    humanButton.addEventListener('click', checkAnswer);
+    changeUsernameButton.addEventListener('click', changeUsername); // Add this line
 
-        // Event listeners for the buttons
-        aiButton.addEventListener('click', checkAnswer);
-        humanButton.addEventListener('click', checkAnswer);
-
-    </script>
-</body>
-</html>
+</script>
