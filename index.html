@@ -43,21 +43,38 @@
         });
     }
 
-    // Check if username is already stored in localStorage
-    let username = localStorage.getItem('username');
+    // Function to check if username exists
+    function checkUsernameExists(username) {
+        const userRef = ref(database, 'users/' + username);
+        return get(userRef).then(snapshot => {
+            return snapshot.exists(); // Returns true if user exists, otherwise false
+        }).catch(error => {
+            console.error("Error checking username:", error);
+            return false; // Default to false in case of error
+        });
+    }
 
-    // If not, prompt for username
-    if (!username || username.trim() === "") {
-        username = prompt("Please enter your username:");
-        
+    // Function to ask for username
+    function askForUsername() {
+        let username = prompt("Please enter your username:");
+
         // Validate the username input
         if (!username || username.trim() === "") {
             alert("Username cannot be empty. Please refresh the page and try again.");
             throw new Error("Invalid username"); // Stops the execution if the username is invalid
         }
 
-        // Store the username in localStorage
-        localStorage.setItem('username', username);
+        return username.trim(); // Return trimmed username
+    }
+
+    // Ask for the username on page load
+    let username = localStorage.getItem("username");
+
+    if (!username) {
+        username = askForUsername(); // Prompt for username if not in local storage
+        localStorage.setItem("username", username); // Store username in local storage
+    } else {
+        alert(`Welcome back, ${username}!`);
     }
 
     // Display the username in the top ribbon
@@ -77,7 +94,6 @@
     const authorBox = document.getElementById('author-box');
     const aiButton = document.getElementById('ai-button');
     const humanButton = document.getElementById('human-button');
-    const changeUsernameButton = document.getElementById('change-username-button'); // Add this line
 
     let texts = []; // Array to hold questions data
     let currentTextIndex = -1;
@@ -133,37 +149,31 @@
         }, 1000);
     }
 
-    // Function to change username
-    function changeUsername() {
-        // Clear username from localStorage
-        localStorage.removeItem('username');
-
-        // Prompt for new username
-        username = prompt("Enter your new username:");
-
-        // Validate the username input
-        if (!username || username.trim() === "") {
-            alert("Username cannot be empty. Please refresh the page and try again.");
-            return; // Exit if the username is invalid
-        }
-
-        // Store the new username in localStorage
-        localStorage.setItem('username', username);
-
-        // Update username display
-        document.getElementById('username-display').innerText = `${username}`;
-
-        // Reset score
-        score = 0;
-        document.getElementById('score-display').innerText = `Score: ${score}`;
-
-        // Save new score in Firebase
-        saveUserScore(username, score);
-    }
-
     // Event listeners for the buttons
     aiButton.addEventListener('click', checkAnswer);
     humanButton.addEventListener('click', checkAnswer);
-    changeUsernameButton.addEventListener('click', changeUsername); // Add this line
 
+    // Change Username functionality
+    document.getElementById('change-username-button').addEventListener('click', () => {
+        const newUsername = prompt("Enter your new username:");
+
+        if (newUsername && newUsername.trim() !== "") {
+            checkUsernameExists(newUsername.trim()).then(exists => {
+                if (exists) {
+                    alert("This username is already taken. Please choose a different one.");
+                } else {
+                    // Update username
+                    localStorage.setItem("username", newUsername.trim());
+                    username = newUsername.trim();
+                    alert(`Username changed to: ${username}`);
+                    document.getElementById('username-display').innerText = username;
+
+                    // Optionally, save current score with the new username
+                    saveUserScore(username, score);
+                }
+            });
+        } else {
+            alert("Username cannot be empty. Please try again.");
+        }
+    });
 </script>
