@@ -174,15 +174,15 @@
         "author": "Gemini 1.5"
     },
     {
-        "text": "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma \u2013 which is living with the results of other people's thinking.",
+        "text": "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.",
         "answer": "Human",
-        "category": "Qoute",
+        "category": "Quote",
         "author": "Steve Jobs"
     },
     {
         "text": "Adventure is not in the guidebook and beauty is not on the map. Seek and ye shall find.",
         "answer": "Human",
-        "category": "Qoute",
+        "category": "Quote",
         "author": "Terry and Renny Russell"
     },
     {
@@ -216,7 +216,7 @@
         "author": "David Lemon & Elzo Smid"
     },
     {
-        "text" : "Kindness is the language which the deaf can hear and the blind can see",
+        "text": "Kindness is the language which the deaf can hear and the blind can see.",
         "answer": "Human",
         "category": "Quote",
         "author": "Mark Twain"
