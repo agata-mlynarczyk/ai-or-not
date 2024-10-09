@@ -135,9 +135,11 @@
         }
 
         // Function to handle button click and update score
-        function checkAnswer(userAnswer, selectedButton) {
+        function checkAnswer(event) {
             if (currentTextIndex === -1) return;  // Ensure the game has started
             
+            const selectedButton = event.target;  // Get the clicked button
+            const userAnswer = selectedButton.id === 'ai-button' ? "AI" : "Human";  // Determine answer based on button
             const correctAnswer = texts[currentTextIndex].answer;
             const isCorrect = userAnswer === correctAnswer;
             score += isCorrect ? 1 : -1;  // Increment or decrement score based on correctness
@@ -161,8 +163,8 @@
         }
 
         // Event listeners for the buttons
-        aiButton.addEventListener('click', () => checkAnswer("AI", aiButton));
-        humanButton.addEventListener('click', () => checkAnswer("Human", humanButton));
+        aiButton.addEventListener('click', checkAnswer);
+        humanButton.addEventListener('click', checkAnswer);
 
     </script>
 </body>
