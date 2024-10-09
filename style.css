@@ -50,8 +50,6 @@ body {
     margin: 0 10px; /* Add a bit of spacing between the elements */
 }
 
-
-
 /* Leaderboard text link style */
 .leaderboard-link {
     font-size: 18px;
@@ -62,6 +60,21 @@ body {
 
 .leaderboard-link:hover {
     text-decoration: none; /* No underline on hover */
+}
+
+/* Change Username Button Style */
+.change-username-button {
+    font-size: 18px;
+    color: white; /* Change text color to white */
+    text-decoration: none;
+    padding: 10px 20px; /* Padding for clickable area */
+    border-radius: 5px;
+    background-color: #28a745; /* Green button color */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.change-username-button:hover {
+    background-color: #218838; /* Darker green on hover */
 }
 
 .container {
