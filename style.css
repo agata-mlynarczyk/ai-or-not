@@ -33,16 +33,19 @@ body {
     font-size: 20px;
     font-weight: bold;
     display: flex;
-    justify-content: space-between; /* Space between elements */
+    justify-content: center; /* Center all elements */
     align-items: center; /* Center content vertically */
 }
 
-.top-ribbon div {
+.top-ribbon .logo-container, .top-ribbon .links-container {
+    flex-basis: 100px; /* Set fixed width for logo and links */
+}
+
+.top-ribbon .center-container {
     display: flex;
-    justify-content: center; /* Center the username and score */
+    justify-content: center;
     align-items: center;
-    gap: 20px;
-    flex-grow: 1; /* Allow div to grow and fill available space */
+    flex-grow: 1; /* Center container takes up the available space */
 }
 
 #username-display,
