@@ -62,20 +62,17 @@ body {
     text-decoration: none; /* No underline on hover */
 }
 
-/* Change Username Button Style */
-.change-username-button {
+.change-username-link {
     font-size: 18px;
-    color: white; /* Change text color to white */
+    color: inherit;
     text-decoration: none;
-    padding: 10px 20px; /* Padding for clickable area */
-    border-radius: 5px;
-    background-color: #28a745; /* Green button color */
-    transition: background-color 0.3s; /* Smooth transition */
+    padding-right: 20px;
 }
 
-.change-username-button:hover {
-    background-color: #218838; /* Darker green on hover */
+.change-username-link:hover {
+    text-decoration: underline;  /* Underline effect on hover */
 }
+
 
 .container {
     text-align: center;
