@@ -60,6 +60,7 @@
 
         // Function to save or update user score in the database
         function saveUserScore(username, score) {
+            username = username.toLowerCase(); // Ensure username is lowercase
             const userRef = ref(database, 'users/' + username);
             set(userRef, { score: score }).then(() => {
                 console.log("Score saved successfully for " + username);
@@ -70,6 +71,7 @@
 
         // Function to get the current score of a user
         function getUserScore(username) {
+            username = username.toLowerCase(); // Ensure username is lowercase
             const userRef = ref(database, 'users/' + username);
             return get(userRef).then(snapshot => {
                 if (snapshot.exists()) {
@@ -94,6 +96,7 @@
                     alert("Username cannot be empty.");
                     username = prompt("Please enter your username:");
                 }
+                username = username.toLowerCase(); // Convert username to lowercase
                 localStorage.setItem("username", username); // Store username in local storage
             } else {
                 alert(`Welcome back, ${username}!`); // Welcome back message if username exists
