@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI vs Human - Rules</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <!-- Top Ribbon -->
+    <div class="top-ribbon">
+        <div>
+            <span id="username-display"></span>
+            <span id="score-display"></span>
+        </div>
+        <!-- Links on the Top Ribbon -->
+        <a href="leaderboard.html" class="leaderboard-link">🏆 Leaderboard</a>
+        <a href="rules.html" class="rules-link">📜 Rules</a>
+        <a href="#" id="change-username-link" class="change-username-link">🔄 Log out</a>
+    </div>
+    
+    <div class="container">
+        <h1>Rules</h1>
+        <p>Content for rules will be added here.</p>
+    </div>
+
+    <!-- Bottom Ribbon -->
+    <div class="bottom-ribbon">
+        <span>Created by </span>
+        <a href="https://www.linkedin.com/in/mlynarczyk-agata/" target="_blank">Agata Mlynarczyk</a> and
+        <a href="https://www.linkedin.com/in/patrick-wakil/" target="_blank">Patrick Wakil</a>
+    </div>
+
+    <!-- Firebase Script Integration for consistency -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAzb29BLFBeOU6ikVM6-AZ7O1rQYczMgmM",
+            authDomain: "ai-or-human-25519.firebaseapp.com",
+            databaseURL: "https://ai-or-human-25519-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "ai-or-human-25519",
+            storageBucket: "ai-or-human-25519.appspot.com",
+            messagingSenderId: "85813605872",
+            appId: "1:85813605872:web:e7fe7dd37f31cc92171935"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        function getUsername() {
+            let username = localStorage.getItem("username");
+            if (username) {
+                document.getElementById('username-display').innerText = `${username}`;
+            }
+        }
+
+        // Retrieve and set the current score for the user
+        function getUserScore(username) {
+            const userRef = ref(database, 'users/' + username);
+            return get(userRef).then(snapshot => {
+                if (snapshot.exists()) {
+                    const score = snapshot.val().score || 0;
+                    document.getElementById('score-display').innerText = `Score: ${score}`;
+                }
+            }).catch(error => {
+                console.error("Error fetching user score:", error);
+            });
+        }
+
+        let username = localStorage.getItem("username");
+        if (username) {
+            getUsername();
+            getUserScore(username);
+        }
+
+        document.getElementById('change-username-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem("username");
+            document.getElementById('username-display').innerText = "";
+            alert("Username cleared. Please refresh to set a new username.");
+            setTimeout(() => location.reload(), 1000);
+        });
+    </script>
+</body>
+</html>
