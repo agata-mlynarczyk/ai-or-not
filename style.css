@@ -240,3 +240,25 @@ tbody tr td:first-child {
 .back-button:hover {
     background-color: #45a049;
 }
+
+/* Specific Styles for the Rules Page */
+.rules-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px 20px 20px; /* Increased top padding */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 750px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    overflow: auto;
+}
+
+.rules-container .text-box {
+    font-size: 28px; /* Increased font size */
+    line-height: 1.6; /* Increased line height for better readability */
+    margin-bottom: 40px;
+}
+
