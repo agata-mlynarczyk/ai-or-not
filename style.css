@@ -37,8 +37,11 @@ body {
     align-items: center; /* Center content vertically */
 }
 
-.top-ribbon .logo-container, .top-ribbon .links-container {
-    flex-basis: 100px; /* Set fixed width for logo and links */
+.top-ribbon .links-container {
+    display: flex;
+    justify-content: flex-end; /* Align the links to the right */
+    gap: 20px; /* Add spacing between the links */
+    flex-basis: 300px; /* Adjust width as needed for the links to fit horizontally */
 }
 
 .top-ribbon .center-container {
