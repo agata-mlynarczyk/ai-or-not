@@ -14,8 +14,8 @@
             <span id="score-display"></span>
         </div>
         <!-- Leaderboard Button on the Top Ribbon -->
-        <a href="leaderboard.html" class="leaderboard-link">🏆 Leaderboard 🏆</a>
-        <button id="change-username-button" class="change-username-button">Re-login</button>
+        <a href="leaderboard.html" class="leaderboard-link">🏆 Leaderboard</a>
+        <a href="#" id="change-username-link" class="change-username-link">Re-login</a>
     </div>
     
     <img src="logo_final.png" alt="AI or Human Logo" id="logo">
@@ -186,9 +186,9 @@
         humanButton.addEventListener('click', checkAnswer);
         
         // Change username button functionality
-        document.getElementById('change-username-button').addEventListener('click', () => {
+        document.getElementById('change-username-link').addEventListener('click', (event) => {
+            event.preventDefault();  // Prevent the default link behavior
             clearUsername();
-            // Optionally, refresh the page or redirect to allow setting a new username
             setTimeout(() => location.reload(), 1000); // Refresh the page after 1 second
         });
 
