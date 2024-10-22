@@ -50,15 +50,15 @@ body {
     margin: 0 10px; /* Add a bit of spacing between the elements */
 }
 
-.leaderboard-link, .change-username-link {
+.leaderboard-link, .rules-link, .change-username-link {
     font-size: 18px;
     color: inherit;
     text-decoration: none;
     padding-right: 20px;
 }
 
-.leaderboard-link:hover, .change-username-link:hover {
-    text-decoration: none; /* No underline on hover for both */
+.leaderboard-link:hover, .rules-link:hover, .change-username-link:hover {
+    text-decoration: none; /* No underline on hover for all */
 }
 
 
