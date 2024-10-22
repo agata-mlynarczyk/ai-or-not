@@ -199,7 +199,7 @@ table {
 }
 
 thead th {
-    background-color: #4CAF50;
+    background-color: #7FB9E2;
     color: white;
     padding: 12px;
     font-size: 1.2em;
@@ -231,7 +231,7 @@ tbody tr td:first-child {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: ##7FB9E2;
     color: white;
     border: none;
     border-radius: 5px;
@@ -241,7 +241,7 @@ tbody tr td:first-child {
 }
 
 .back-button:hover {
-    background-color: #45a049;
+    background-color: #91C1E2;
 }
 
 /* Specific Styles for the Rules Page */
