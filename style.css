@@ -9,7 +9,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #B6D0E2; /* Powder Blue */
     padding-top: 50px; /* Padding to accommodate top ribbon */
-    padding-bottom: 50px; /* Padding to avoid content overlap with bottom ribbon */
+    padding-bottom: 50px; /* Padding to avoid content overlap with bottom ribbon */ 
 }
 
 #logo {
