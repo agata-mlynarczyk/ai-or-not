@@ -260,8 +260,8 @@ tbody tr td:first-child {
 }
 
 .rules-container .text-box {
-    font-size: 28px; /* Increased font size */
-    line-height: 1.6; /* Increased line height for better readability */
+    font-size: 30px; /* Increased font size */
+    line-height: 2; /* Increased line height for better readability */
     margin-bottom: 40px;
 }
 
