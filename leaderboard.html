@@ -42,6 +42,7 @@
                 <!-- Scores will be dynamically inserted here -->
             </tbody>
         </table>
+        <span id="load-more" class="load-more">Load more</span>
     </div>
 
     <div class="bottom-ribbon">
@@ -100,41 +101,59 @@
             window.location.href = 'index.html';
         });
 
-        // Fetch all users' scores and display them in the leaderboard
-        const leaderboardBody = document.getElementById('leaderboard-body');
+        let allScores = [];
+        let currentDisplayed = 0;
+        const itemsPerLoad = 3;
+
+        function displayScores(startIndex, count) {
+            const endIndex = Math.min(startIndex + count, allScores.length);
+            
+            for (let i = startIndex; i < endIndex; i++) {
+                let user = allScores[i];
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${i + 1}</td>
+                    <td>${user.username}</td>
+                    <td>${user.score}</td>
+                `;
+                leaderboardBody.appendChild(row);
+            }
+            
+            currentDisplayed = endIndex;
+            
+            // Show/hide "Load more" based on whether there are more items
+            const loadMoreElement = document.getElementById('load-more');
+            if (currentDisplayed < allScores.length) {
+                loadMoreElement.style.display = 'block';
+            } else {
+                loadMoreElement.style.display = 'none';
+            }
+        }
 
         function fetchLeaderboard() {
             const usersRef = ref(database, 'users');
             get(usersRef).then((snapshot) => {
                 if (snapshot.exists()) {
                     const usersData = snapshot.val();
-                    let scoresArray = [];
+                    allScores = [];
 
                     // Push all users' data into an array
                     for (let userUUID in usersData) {
                         let userData = usersData[userUUID];
-                        scoresArray.push({
-                            username: userData.username || userUUID,  // In case username is missing
-                            score: userData.score || 0  // Default to 0 if score is missing
+                        allScores.push({
+                            username: userData.username || userUUID,
+                            score: userData.score || 0
                         });
                     }
 
                     // Sort the array by score in descending order
-                    scoresArray.sort((a, b) => b.score - a.score);
+                    allScores.sort((a, b) => b.score - a.score);
 
                     // Clear existing leaderboard
                     leaderboardBody.innerHTML = '';
 
-                    // Display the sorted scores in the leaderboard
-                    scoresArray.forEach((user, index) => {
-                        let row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${index + 1}</td>
-                            <td>${user.username}</td>
-                            <td>${user.score}</td>
-                        `;
-                        leaderboardBody.appendChild(row);
-                    });
+                    // Display initial batch of scores
+                    displayScores(0, itemsPerLoad);
                 } else {
                     console.log("No users found in the database.");
                 }
@@ -143,7 +162,12 @@
             });
         }
 
-        // Load leaderboard data on page load
+        // Add event listener for "Load more"
+        document.getElementById('load-more').addEventListener('click', () => {
+            displayScores(currentDisplayed, itemsPerLoad);
+        });
+
+        // Load initial leaderboard data
         fetchLeaderboard();
     </script>
 </body>
