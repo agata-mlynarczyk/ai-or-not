@@ -23,11 +23,12 @@
         </div>
     </div>
 
-    <!-- New Back Button -->
+    <!-- Back Button -->
     <a href="index.html" class="back-to-game">
         ⬅️ Back to game
     </a>
 
+    <!-- Leaderboard Container -->
     <div class="leaderboard-container">
         <h1>🏆 Leaderboard 🏆</h1>
         <table id="leaderboard-table">
@@ -45,6 +46,7 @@
         <span id="load-more" class="load-more">Load more</span>
     </div>
 
+    <!-- Bottom Ribbon -->
     <div class="bottom-ribbon">
         <span>Created by </span>
         <a href="https://www.linkedin.com/in/mlynarczyk-agata/" target="_blank">Agata Mlynarczyk</a> and
@@ -72,6 +74,14 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
+        // Get DOM elements
+        const leaderboardBody = document.getElementById('leaderboard-body');
+        const loadMoreElement = document.getElementById('load-more');
+
+        let allScores = [];
+        let currentDisplayed = 0;
+        const itemsPerLoad = 3;
+
         // Username handling function
         function setUsername() {
             let username = localStorage.getItem("username");
@@ -81,29 +91,6 @@
             }
             return null;
         }
-
-        // Set username and get score
-        let username = setUsername();
-        if (username) {
-            const userRef = ref(database, 'users/' + username.toLowerCase());
-            get(userRef).then(snapshot => {
-                if (snapshot.exists()) {
-                    const score = snapshot.val().score || 0;
-                    document.getElementById('score-display').innerText = `Score: ${score}`;
-                }
-            });
-        }
-
-        // Logout functionality
-        document.getElementById('change-username-link').addEventListener('click', (event) => {
-            event.preventDefault();
-            localStorage.removeItem("username");
-            window.location.href = 'index.html';
-        });
-
-        let allScores = [];
-        let currentDisplayed = 0;
-        const itemsPerLoad = 3;
 
         function displayScores(startIndex, count) {
             const endIndex = Math.min(startIndex + count, allScores.length);
@@ -122,7 +109,6 @@
             currentDisplayed = endIndex;
             
             // Show/hide "Load more" based on whether there are more items
-            const loadMoreElement = document.getElementById('load-more');
             if (currentDisplayed < allScores.length) {
                 loadMoreElement.style.display = 'block';
             } else {
@@ -130,9 +116,11 @@
             }
         }
 
-        function fetchLeaderboard() {
-            const usersRef = ref(database, 'users');
-            get(usersRef).then((snapshot) => {
+        async function fetchLeaderboard() {
+            try {
+                const usersRef = ref(database, 'users');
+                const snapshot = await get(usersRef);
+                
                 if (snapshot.exists()) {
                     const usersData = snapshot.val();
                     allScores = [];
@@ -157,18 +145,39 @@
                 } else {
                     console.log("No users found in the database.");
                 }
-            }).catch((error) => {
+            } catch (error) {
                 console.error("Error fetching leaderboard data:", error);
+            }
+        }
+
+        // Set username and get score
+        let username = setUsername();
+        if (username) {
+            const userRef = ref(database, 'users/' + username.toLowerCase());
+            get(userRef).then(snapshot => {
+                if (snapshot.exists()) {
+                    const score = snapshot.val().score || 0;
+                    document.getElementById('score-display').innerText = `Score: ${score}`;
+                }
             });
         }
 
+        // Logout functionality
+        document.getElementById('change-username-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem("username");
+            window.location.href = 'index.html';
+        });
+
         // Add event listener for "Load more"
-        document.getElementById('load-more').addEventListener('click', () => {
+        loadMoreElement.addEventListener('click', () => {
             displayScores(currentDisplayed, itemsPerLoad);
         });
 
         // Load initial leaderboard data
-        fetchLeaderboard();
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchLeaderboard();
+        });
     </script>
 </body>
 </html>
