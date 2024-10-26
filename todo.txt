@@ -1,6 +1,5 @@
-leaderboard 
+leaderboard - only load first 100, button for loading more 
+more human examples 
 secure the database 
 expanding to images
-do not ask for login on refresh or back to page
-username case sensitive
 hide api from console page
