@@ -52,6 +52,13 @@ body {
     flex-grow: 1; /* Center container takes up the available space */
 }
 
+@media (max-width: 800px) {
+    .top-ribbon .links-container {
+        gap: 10px;
+        font-size: 16px; /* Slightly smaller text */
+    }
+}
+
 #username-display,
 #score-display {
     margin: 0 10px; /* Add a bit of spacing between the elements */
