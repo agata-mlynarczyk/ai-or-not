@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard - AI vs Human Quiz</title>
-    <link rel="stylesheet" href="style.css"> <!-- Updated to reference the new combined CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Top Ribbon -->
+    <div class="top-ribbon">
+        <div class="logo-container">
+            <img src="logo_final.png" alt="AI or Human Logo" id="logo">
+        </div>
+        <div class="center-container">
+            <span id="username-display"></span>
+            <span id="score-display"></span>
+        </div>
+        <div class="links-container">
+            <a href="leaderboard.html" class="leaderboard-link">🏆 Leaderboard</a>
+            <a href="rules.html" class="rules-link">📜 Rules</a>
+            <a href="#" id="change-username-link" class="change-username-link">🔄 Log out</a>
+        </div>
+    </div>
+
     <div class="leaderboard-container">
         <h1>🏆 Leaderboard 🏆</h1>
         <table id="leaderboard-table">
@@ -36,7 +52,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
         import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
 
-        // Firebase Configuration (same as in your main app)
+        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyAzb29BLFBeOU6ikVM6-AZ7O1rQYczMgmM",
             authDomain: "ai-or-human-25519.firebaseapp.com",
@@ -50,6 +66,35 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
+
+        // Username handling function
+        function setUsername() {
+            let username = localStorage.getItem("username");
+            if (username) {
+                document.getElementById('username-display').innerText = `${username}`;
+                return username;
+            }
+            return null;
+        }
+
+        // Set username and get score
+        let username = setUsername();
+        if (username) {
+            const userRef = ref(database, 'users/' + username.toLowerCase());
+            get(userRef).then(snapshot => {
+                if (snapshot.exists()) {
+                    const score = snapshot.val().score || 0;
+                    document.getElementById('score-display').innerText = `Score: ${score}`;
+                }
+            });
+        }
+
+        // Logout functionality
+        document.getElementById('change-username-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem("username");
+            window.location.href = 'index.html';
+        });
 
         // Fetch all users' scores and display them in the leaderboard
         const leaderboardBody = document.getElementById('leaderboard-body');
@@ -72,6 +117,9 @@
 
                     // Sort the array by score in descending order
                     scoresArray.sort((a, b) => b.score - a.score);
+
+                    // Clear existing leaderboard
+                    leaderboardBody.innerHTML = '';
 
                     // Display the sorted scores in the leaderboard
                     scoresArray.forEach((user, index) => {
