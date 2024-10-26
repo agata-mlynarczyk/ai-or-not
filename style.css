@@ -42,6 +42,7 @@ body {
     justify-content: flex-end; /* Align the links to the right */
     gap: 20px; /* Add spacing between the links */
     flex-basis: 300px; /* Adjust width as needed for the links to fit horizontally */
+    flex-wrap: nowrap;
 }
 
 .top-ribbon .center-container {
