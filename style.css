@@ -253,19 +253,28 @@ tbody tr td:first-child {
     background-color: #7FB9E2;
 }
 
-/* Specific Styles for the Rules Page */
 .rules-container {
     text-align: center;
     background-color: #fff;
-    padding: 40px 20px 20px; /* Increased top padding */
+    padding: 40px 40px 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 750px;
     height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align content to the top */
+    justify-content: flex-start;
     overflow: auto;
+}
+
+.rules-container p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin: 20px 0;
+}
+
+.rules-container h1 {
+    margin-bottom: 30px;
 }
 
 
