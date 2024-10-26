@@ -185,7 +185,7 @@ button:hover {
 .leaderboard-container {
     width: 80%;
     max-width: 800px;
-    margin: 50px auto;
+    margin: 0 auto;
     text-align: center;
     background-color: #f9f9f9;
     border-radius: 10px;
