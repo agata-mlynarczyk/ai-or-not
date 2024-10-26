@@ -8,7 +8,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #B6D0E2; /* Powder Blue */
-    padding-top: 50px; /* Padding to accommodate top ribbon */
+    padding-top: 80px; /* Padding to accommodate top ribbon */
     padding-bottom: 50px; /* Padding to avoid content overlap with bottom ribbon */ 
 }
 
@@ -185,12 +185,14 @@ button:hover {
 .leaderboard-container {
     width: 80%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto; /* Remove top margin */
     text-align: center;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    position: relative;
+    top: 20px; /* Fine-tune this value to align with the back button */
 }
 
 /* Title Styling */
