@@ -271,13 +271,14 @@ tbody tr td:first-child {
 
 .back-to-game {
     position: fixed;
-    top: 100px; /* Positions it below the top ribbon */
+    top: 100px;
     left: 20px;
     padding: 10px 20px;
-    background-color: #fff; /* Same as ribbon */
+    background-color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 20px;  /* Updated to match top ribbon */
+    font-weight: bold;  /* Added to match top ribbon */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -285,10 +286,12 @@ tbody tr td:first-child {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     text-decoration: none;
     color: inherit;
+    font-family: Arial, sans-serif;  /* Added to ensure font consistency */
 }
 
 .back-to-game:hover {
-    background-color: #f2f2f2; /* Same as table hover */
+    background-color: #f2f2f2;
+    text-decoration: none;  /* Added to prevent underline on hover */
 }
 
 .rules-container .text-box {
