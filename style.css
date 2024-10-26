@@ -24,7 +24,6 @@ body {
 .top-ribbon {
     background-color: #fff;
     padding: 10px 20px;
-    text-align: center;
     position: fixed;
     top: 0;
     width: 100%;
@@ -33,23 +32,23 @@ body {
     font-size: 20px;
     font-weight: bold;
     display: flex;
-    justify-content: center; /* Center all elements */
-    align-items: center; /* Center content vertically */
+    justify-content: space-between;
+    align-items: center;
 }
 
 .top-ribbon .links-container {
     display: flex;
-    justify-content: flex-end; /* Align the links to the right */
-    gap: 20px; /* Add spacing between the links */
-    flex-basis: 300px; /* Adjust width as needed for the links to fit horizontally */
-    flex-wrap: nowrap;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
 }
 
 .top-ribbon .center-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1; /* Center container takes up the available space */
+    gap: 10px;
 }
 
 @media (max-width: 800px) {
@@ -65,10 +64,12 @@ body {
 }
 
 .leaderboard-link, .rules-link, .change-username-link {
-    font-size: 18px;
-    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     text-decoration: none;
-    padding-right: 20px;
+    color: inherit;
+    font-size: 18px;
 }
 
 .leaderboard-link:hover, .rules-link:hover, .change-username-link:hover {
