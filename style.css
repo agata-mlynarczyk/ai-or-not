@@ -309,3 +309,16 @@ tbody tr td:first-child {
     margin-bottom: 40px;
 }
 
+.load-more {
+    color: #7FB9E2;
+    cursor: pointer;
+    display: none;  /* Hidden by default, shown when there are more items */
+    margin-top: 15px;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.load-more:hover {
+    color: #5a8bb0;
+    text-decoration: underline;
+}
