@@ -234,10 +234,64 @@
         "author": "Elon Musk"
     },
     {
-        "text": "",
-        "answer": "AI",
-        "category": "",
-        "author": "ChatGPT 4o"
+        "text": "A man with no motive is a man no one suspects. Always keep your foes confused: If they don't know who you are, what you want—they can't know what you plan to do next.",
+        "answer": "Human",
+        "category": "Movie quote",
+        "author": "Lord Petyr Baelish, Game of Thrones"
+    },
+    {
+        "text": "You cannot use up creativity. The more you use, the more you have. ",
+        "answer": "Human",
+        "category": "Quote",
+        "author": "Maya Angelou"
+    },
+    {
+        "text": "Imagine a world in which every single person on the planet has free access to the sum of all human knowledge.",
+        "answer": "Human",
+        "category": "Quote",
+        "author": "Jimmy Wales, Founder of Wikipedia"
+    },
+    {
+        "text": "An old silent pond\nA frog jumps into the pond,\nsplash! Silence again. ",
+        "answer": "Human",
+        "category": "Haiku",
+        "author": "Bashō"
+    },
+    {
+        "text": "Just friends:\nhe watches my gauze dress\nblowing on the line.",
+        "answer": "Human",
+        "category": "Haiku",
+        "author": "Bashō"
+    },
+    {
+        "text": "Engineered to Move the Human Spirit",
+        "answer": "Human",
+        "category": "Slogan",
+        "author": "Mercedes-Benz"
+    },
+    {
+        "text": "Once You Pop, You Can’t Stop",
+        "answer": "Human",
+        "category": "Slogan",
+        "author": "Pringles"
+    },
+    {
+        "text": "Dance across rooftops!\nLaughing, springing, unafraid\nof falling off the",
+        "answer": "Human",
+        "category": "Haiku",
+        "author": "David van Wert "
+    },
+    {
+        "text": "The rain it raineth on the just\nAnd also on the unjust fella;\nBut chiefly on the just, because\nThe unjust hath the just’s umbrella.",
+        "answer": "Human",
+        "category": "Quote",
+        "author": "Charles Bowen"
+    },
+    {
+        "text": "Feet, what do I need you for when I have wings to fly?",
+        "answer": "Human",
+        "category": "Quote",
+        "author": "Frida Kahlo"
     },
     {
         "text": "Some say the world will end in fire,\nSome say in ice.\nFrom what I've tasted of desire\nI hold with those who favor fire.\nBut if it had to perish twice,\nI think I know enough of hate\nTo know that for destruction ice\nIs also great\nAnd would suffice.",
